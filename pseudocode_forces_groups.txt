@@ -1,0 +1,21 @@
+def return_accelerations(mass: np.array, positions: np.array) -> np.array:
+    N = len(mass) # maybe N is defined in ICs, so might not be necessary
+    accelerations = np.zeros((N,3)) # instantiate array with 0s the same length as N
+
+    for i in range(len(mass)):
+        for j in range(i+1, len(mass)): # prevent i == j calculations
+            accelerations[i] += compute_accelerations(mass[j], positions[i], positions[j])
+
+    return accelerations
+
+def compute_accelerations(mass: float, x: np.array, y: np.array) -> np.array:
+    distance = compute_distance(x, y)
+    r = compute_vector(x, y)
+
+    return (G * mass) / (distance**3) * r
+
+def compute_distance(x: np.array, y: np.array) -> float:
+    return ((a - b) ** 2 for a, b in x, y) ** 0.5 # Euclidean distance calculation for coordinates in x and y
+
+def compute_vector(x: np.array, y: np.array) -> np.array:
+    return y - x # vector subtraction

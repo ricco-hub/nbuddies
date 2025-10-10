@@ -1,0 +1,20 @@
+Units:
+    mass = M_solar
+    distance = kpc
+    velocity = km/s
+
+Weeks:
+    Week 2:
+        Units might become an issue
+        To do:
+            Create tests
+            Make separate branch for my own work, main will be pulled from project leaders' contributions
+    Week 3:
+        IC's need to be updated to include accelerations in black hole class
+        Add comments for justification of algorithms/changes to code from previous week
+        Pint units might give us issues
+        Time steps group: saving all time steps at each time step
+        Binary ICs group: combining all other group's work into one place for two black holes
+        Only assigning units to G but nowhere else (like to positions and velocities) ->
+            should we just return magnitude of values w/constants or attach units to everything?
+        To do:
