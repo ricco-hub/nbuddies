@@ -17,4 +17,8 @@ Weeks:
         Binary ICs group: combining all other group's work into one place for two black holes
         Only assigning units to G but nowhere else (like to positions and velocities) ->
             should we just return magnitude of values w/constants or attach units to everything?
+        Project leader for this week
+        2 reviewers have git merge ability (not including person that made PR)
         To do:
+            Run linter on code (ruff)
+            Create graphic visualizing positions of cluster particles over time
