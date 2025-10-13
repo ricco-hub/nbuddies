@@ -20,5 +20,4 @@ Weeks:
         Project leader for this week
         2 reviewers have git merge ability (not including person that made PR)
         To do:
-            Run linter on code (ruff)
             Create graphic visualizing positions of cluster particles over time
