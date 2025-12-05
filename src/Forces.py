@@ -2,7 +2,8 @@
 
 import numpy as np
 from .BlackHoles_Struct import BlackHole
-from .gravitree import Node, build_tree
+# from .gravitree import Node, build_tree
+from .merge_gravitree import Node, build_tree
 
 # Gravitational constant (magnitude only, no units)
 GG_new = 4.301047329348498e-06  # kpc * km^2 / (M_sun * s^2)
@@ -114,7 +115,7 @@ def recalculate_dynamics(BHs: list[BlackHole], use_tree : bool, use_dynamic_crit
         accuracy parameter for geometric criterion
     """
     if use_tree:
-        root = build_tree(BHs)
+        root, ignore_radius = build_tree(BHs)
 
     for BH_i in BHs: 
         #Reset acceleration before summing 

@@ -1,0 +1,43 @@
+Notes
+How to minimize loss-function: user-defined
+Different kinds of norms:
+    L_1: ||x - y|| = |x_1 - y_1| + |x_2 - y_2| + |x_3 - y_3|
+    L_2: ||x - y||^2
+    L_inf: max(|x_i - y_i|)
+Still need to find min. that finds theta_i like:
+    theta_(i+1) = theta_i - eta * \grad_theta * L(x, theta)
+    when near a min., \grad_theta * L(x, theta) is small
+    models set a large initial eta, learning rate and shrink it as they go 
+    stochastic gradient descent
+ADAM
+    generalized to estimate higher derivatives and uncertainity is current gradient
+    automatic differentiation - doesn't work for conditions (derivative of step function)
+
+Types of models (in order of increasing training difficult):
+    NN: 
+        convolutional or fully connected. Initial dataset (e.g., image of smiley face with letter Q beneath). 
+        NN needs to recognize smiley face and letter. Represents image by small series of matrices (8x8) - the neural
+        layer and pipes through non-linear cutoff ftn. (and ideally differentiable). Encode small scales in neural layer
+        and feed through cutoff ftn. by training on larger matrix. Best for image data such as feature recognition
+    Generative Adversarial Network: 
+        Training two models against each other: generator and discriminator (checking). Designed to play chess and
+        games. Add noise to input
+
+    Transformer:
+        ChatGPT model. Minimally used in astrophysics. Fields for things that look like words (bio)
+
+    Diffusion:
+        Slow to train, commonly used in astrophysics. Have image (e.g., cat) and add noise to it to make 
+        a fuzzy cat and then keep going until there is an image of pure noise. Train model to go backwards from
+        noise to image. Encoding transformations from Gaussian to non-Gaussian field. Can train on multiple images and
+        steps can be combined as well as images. Image generators
+
+Go to PyTorch for Neural Networks and copy code
+.forward is prediction method
+set of modules inside NN
+first matrix, small max ftn., second larger matrix, second small max ftn., third larger matrix -> can use defaults
+using inheritance class
+install PyTorch and start working on training data (groups of 3)
+
+Team 1: Anjali and Hajar
+take 2D image and flatten it

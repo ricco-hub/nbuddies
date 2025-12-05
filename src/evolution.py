@@ -1,5 +1,7 @@
 from tqdm import tqdm
 from .Forces import *
+from .mergers import find_merger_new
+from .merge_gravitree import build_tree
 import os
 import pickle
 import numpy as np
@@ -184,6 +186,27 @@ def update_params_adaptive_timestep(data, tot_time, num_steps, eta, path, leapfr
             else:
                 # Euler integration
                 result = euler_integrator(data, delta_t, use_tree, use_dynamic_criterion, ALPHA, THETA_0)
+            
+            if running_time != 0: # skip the first timestep (?)
+                tree, radius = build_tree(result)
+                consumed_ids = set()
+                new_result = []
+
+                for bh in result:
+                    if id(bh) in consumed_ids:
+                        continue
+
+                    merged_bh, consumed_list = find_merger_new(bh, tree, radius)
+
+                    # mark all consumed BHs by ID
+                    for c in consumed_list:
+                        consumed_ids.add(id(c))
+
+                    # Add merged BH to next timestep
+                    new_result.append(merged_bh)
+
+                result = new_result
+            
             running_time += delta_t
             times[count] = running_time
             count += 1

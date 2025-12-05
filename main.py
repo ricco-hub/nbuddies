@@ -1,5 +1,5 @@
 from src.ICs import *
-from src.evolution import simulation
+from src.merge_evolution import simulation
 from src.visualizations import *
 from src.Forces import GG_new
 import os
@@ -153,6 +153,8 @@ simulation(data_path+"/ICs.pkl", data_path, tot_time=sim_time, nsteps=args.n_ste
            use_dynamic_criterion= not args.use_geometric_criterion, ALPHA = args.ALPHA, THETA_0 = args.THETA_0)
 
 # movie_3D(args.name)
+movie_3D_new(args.name)
 # radial_position_plot(args.name)
+radial_position_plot_new(args.name)
 end = time.time()
 print(f"Total execution time: {((end - start)/60):.2f} minutes")
